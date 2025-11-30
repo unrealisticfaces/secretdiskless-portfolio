@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Diskless | Portfolio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="./assets/clients/secret-icon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        main: '#050505',
+                        card: '#111111',
+                        accent: '#a855f7', // Purple
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotateY(-10deg) rotateX(5deg)' },
+                            '50%': { transform: 'translateY(-20px) rotateY(-10deg) rotateX(5deg)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+            /* Subtle Grid Background */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        /* 3D Container Background */
+        #canvas-container {
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            /* Purple glow focused on the right side */
+            background: radial-gradient(circle at 75% 50%, rgba(168, 85, 247, 0.15) 0%, #050505 60%);
+            pointer-events: none;
+        }
+
+        /* Tech Cards */
+        .tech-card {
+            background: rgba(10, 10, 10, 0.85); 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            transition: all 0.2s ease;
+        }
+
+        .tech-card:hover {
+            border-color: #a855f7;
+            transform: translateY(-2px);
+            background: rgba(20, 20, 20, 0.95);
+            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.1);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: #fff;
+            color: #000;
+            font-weight: 600;
+            border: 1px solid #fff;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover {
+            background: #a855f7;
+            border-color: #a855f7;
+            color: #fff;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.2s;
+        }
+        .btn-outline:hover {
+            border-color: #fff;
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* CSS 3D Effect for Logo */
+        .logo-3d-wrapper {
+            perspective: 1000px; /* Creates 3D depth */
+        }
+        
+        .logo-3d {
+            /* Basic Tilt */
+            transform-style: preserve-3d;
+            /* Drop shadow creates the illusion of depth */
+            filter: drop-shadow(0 25px 25px rgba(168, 85, 247, 0.3)); 
+            max-height: 400px;
+            width: auto;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="canvas-container"></div>
+
+    <header class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/5">
+        <div class="container mx-auto px-6 h-16 flex justify-between items-center">
+            
+            <a href="#" class="flex items-center">
+                <img src="./assets/clients/secret logo2.webp" alt="Secret Diskless Services Logo" class="h-10 w-auto">
+            </a>
+            
+            <nav class="hidden md:flex space-x-8 text-sm font-mono text-gray-400">
+                <a href="#home" class="hover:text-white transition">/home</a>
+                <a href="#clients" class="hover:text-white transition">/clients</a>
+            </nav>
+
+            <a href="#contact" class="hidden md:block px-4 py-2 text-xs font-mono border border-white/20 rounded hover:border-accent hover:text-accent transition">
+                CONTACT_ME
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="min-h-screen flex items-center pt-16 relative overflow-hidden">
+            <div class="container mx-auto px-6 z-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    
+                    <div class="text-left order-2 md:order-1">
+                        <p class="font-mono text-accent mb-4 text-sm tracking-widest uppercase animate-pulse">System Online</p>
+                        
+                        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold font-mono text-white mb-6 tracking-tight drop-shadow-2xl leading-[1.1]">
+                            Secret Diskless <br/> Services
+                        </h1>
+                        <p class="text-xl text-gray-300 max-w-lg mb-10 leading-relaxed font-light drop-shadow-lg">
+                            Full-Stack Software Development & <br /> Diskless Infrastructure Specialist.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#contact" class="btn-primary px-8 py-4 rounded text-sm font-mono text-center">GET IN TOUCH</a>
+                            <a href="#clients" class="btn-outline px-8 py-4 rounded text-sm font-mono text-center">VIEW CLIENTS</a>
+                        </div>
+                    </div>
+
+                    <div class="logo-3d-wrapper order-1 md:order-2 h-[400px] md:h-auto flex items-center justify-center">
+                        <img 
+                            src="./assets/clients/secret logo.webp" 
+                            alt="3D Logo" 
+                            class="logo-3d animate-float"
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="clients" class="py-24 border-t border-white/5 relative z-10">
+            <div class="absolute inset-0 bg-black/80 pointer-events-none -z-10"></div>
+            <div class="container mx-auto px-6">
+                <div class="mb-12">
+                    <h2 class="text-3xl font-bold text-white mb-2">Trusted Clients</h2>
+                    <div class="h-1 w-20 bg-accent"></div>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                     <div class="tech-card p-2 rounded flex flex-col items-center justify-center">
+                        <div class="w-full aspect-square bg-black/50 rounded mb-2 overflow-hidden p-2">
+                            <img src="./assets/clients/1.webp" alt="G-7" class="w-full h-full object-contain opacity-80 hover:opacity-100 transition">
+                        </div>
+                        <span class="text-xs font-mono text-gray-400 text-center">G-7 Cebu</span>
+                    </div>
+                    <div class="tech-card p-2 rounded flex flex-col items-center justify-center">
+                        <div class="w-full aspect-square bg-black/50 rounded mb-2 overflow-hidden p-2">
+                            <img src="./assets/clients/2.webp" alt="Zeux" class="w-full h-full object-contain opacity-80 hover:opacity-100 transition">
+                        </div>
+                        <span class="text-xs font-mono text-gray-400 text-center">Zeux Esports</span>
+                    </div>
+                     <div class="tech-card p-2 rounded flex flex-col items-center justify-center">
+                        <div class="w-full aspect-square bg-black/50 rounded mb-2 overflow-hidden p-2">
+                            <img src="./assets/clients/3.webp" alt="Skye" class="w-full h-full object-contain opacity-80 hover:opacity-100 transition">
+                        </div>
+                        <span class="text-xs font-mono text-gray-400 text-center">Skye Gaming</span>
+                    </div>
+                    <div class="tech-card p-2 rounded flex flex-col items-center justify-center">
+                        <div class="w-full aspect-square bg-black/50 rounded mb-2 overflow-hidden p-2">
+                            <img src="./assets/clients/4.webp" alt="Gamers Lounge" class="w-full h-full object-contain opacity-80 hover:opacity-100 transition">
+                        </div>
+                        <span class="text-xs font-mono text-gray-400 text-center">Gamers Lounge</span>
+                    </div>
+                    <div class="tech-card p-2 rounded flex flex-col items-center justify-center">
+                        <div class="w-full aspect-square bg-black/50 rounded mb-2 overflow-hidden p-2">
+                            <img src="./assets/clients/5.webp" alt="Rocket Punch" class="w-full h-full object-contain opacity-80 hover:opacity-100 transition">
+                        </div>
+                        <span class="text-xs font-mono text-gray-400 text-center">Rocket Punch Gaming</span>
+                    </div>
+                    <div class="tech-card p-2 rounded flex flex-col items-center justify-center">
+                        <div class="w-full aspect-square bg-black/50 rounded mb-2 overflow-hidden p-2">
+                            <img src="./assets/clients/voodoo.webp" alt="Voodoo" class="w-full h-full object-contain opacity-80 hover:opacity-100 transition">
+                        </div>
+                        <span class="text-xs font-mono text-gray-400 text-center">Voodoo Esports Cebu</span>
+                    </div>
+                    <div class="tech-card p-2 rounded flex flex-col items-center justify-center">
+                        <div class="w-full aspect-square bg-black/50 rounded mb-2 overflow-hidden p-2">
+                            <img src="./assets/clients/7.webp" alt="TNC" class="w-full h-full object-contain opacity-80 hover:opacity-100 transition">
+                        </div>
+                        <span class="text-xs font-mono text-gray-400 text-center">TNC Pasig</span>
+                    </div>
+                    <div class="tech-card p-2 rounded flex flex-col items-center justify-center">
+                        <div class="w-full aspect-square bg-black/50 rounded mb-2 overflow-hidden p-2">
+                            <img src="./assets/clients/10.webp" alt="GC" class="w-full h-full object-contain opacity-80 hover:opacity-100 transition">
+                        </div>
+                        <span class="text-xs font-mono text-gray-400 text-center">GC Esports</span>
+                    </div>
+                     <div class="tech-card p-2 rounded flex flex-col items-center justify-center">
+                        <div class="w-full aspect-square bg-black/50 rounded mb-2 overflow-hidden p-2">
+                            <img src="./assets/clients/9.webp" alt="Drippy" class="w-full h-full object-contain opacity-80 hover:opacity-100 transition">
+                        </div>
+                        <span class="text-xs font-mono text-gray-400 text-center">DrippyLab Cebu</span>
+                    </div>
+                     <div class="tech-card p-2 rounded flex flex-col items-center justify-center">
+                        <div class="w-full aspect-square bg-black/50 rounded mb-2 overflow-hidden p-2">
+                            <img src="./assets/clients/dokbartz.webp" alt="DokBartz" class="w-full h-full object-contain opacity-80 hover:opacity-100 transition">
+                        </div>
+                        <span class="text-xs font-mono text-gray-400 text-center">DokBartz</span>
+                    </div>
+                     <div class="tech-card p-2 rounded flex flex-col items-center justify-center">
+                        <div class="w-full aspect-square bg-black/50 rounded mb-2 overflow-hidden p-2">
+                          <img src="./assets/clients/twinj.webp" alt="TwinJ" class="w-full h-full object-contain opacity-80 hover:opacity-100 transition">
+                        </div>
+                        <span class="text-xs font-mono text-gray-400 text-center">TwinJ Gaming</span>
+                    </div>
+                     <div class="tech-card p-2 rounded flex flex-col items-center justify-center">
+                      <div class="w-full aspect-square bg-black/50 rounded mb-2 overflow-hidden p-2">
+                          <img src="./assets/clients/a4kze.webp" alt="A4ZKE" class="w-full h-full object-contain opacity-80 hover:opacity-100 transition">
+                        </div>
+                        <span class="text-xs font-mono text-gray-400 text-center">A4ZKE Esports</span>
+                    </div>
+                     <div class="tech-card p-2 rounded flex flex-col items-center justify-center">
+                      <div class="w-full aspect-square bg-black/50 rounded mb-2 overflow-hidden p-2">
+                          <img src="./assets/clients/siberia.webp" alt="Siberia" class="w-full h-full object-contain opacity-80 hover:opacity-100 transition">
+                        </div>
+                        <span class="text-xs font-mono text-gray-400 text-center">Siberia Gaming</span>
+                    </div>
+
+                    <div class="tech-card p-2 rounded flex flex-col items-center justify-center">
+                      <div class="w-full aspect-square bg-black/50 rounded mb-2 overflow-hidden p-2">
+                          <img src="./assets/clients/dobby.webp" alt="Dobbyfy" class="w-full h-full object-contain opacity-80 hover:opacity-100 transition">
+                        </div>
+                        <span class="text-xs font-mono text-gray-400 text-center">Dobbyfy Cafe</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 border-t border-white/5 relative z-10 bg-black">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold text-white mb-8">Connect</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    
+                    <a href="mailto:kthdavid7@gmail.com" class="tech-card px-6 py-4 rounded flex items-center justify-center gap-3 hover:text-accent transition w-full">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                        <span class="font-mono text-sm truncate">kthdavid7@gmail.com</span>
+                    </a>
+                    
+                    <a href="https://www.facebook.com/kthdavidx/" target="_blank" class="tech-card px-6 py-4 rounded flex items-center justify-center gap-3 hover:text-blue-400 transition w-full">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                        <span class="font-mono text-sm truncate">Keith David</span>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/supremokdd/" target="_blank" class="tech-card px-6 py-4 rounded flex items-center justify-center gap-3 hover:text-pink-400 transition w-full">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                        <span class="font-mono text-sm truncate">@supremokdd</span>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-white/5 py-8 bg-black relative z-10">
+        <div class="container mx-auto px-6 text-center text-gray-600 font-mono text-xs">
+            &copy; 2025 Secret Diskless Services.
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
